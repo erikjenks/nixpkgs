@@ -18,6 +18,7 @@
     cachix
     devenv
     rclone
+    exercism
   ];
 
   programs.oh-my-posh = {
