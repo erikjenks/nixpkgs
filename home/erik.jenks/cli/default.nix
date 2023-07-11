@@ -19,6 +19,7 @@
     devenv
     rclone
     exercism
+    httpie
   ];
 
   programs.oh-my-posh = {
