@@ -106,7 +106,6 @@ rec {
               features = homeFeatures;
               unstable = import nixpkgs-unstable { inherit system; };
             };
-            # users.${username}.imports = [ ../home/${username} ];
             users.${username} = import ../home/${username};
           };
         }
