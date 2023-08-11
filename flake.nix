@@ -62,59 +62,17 @@
           };
         };
 
-        darwinConfigurations = { };
+        darwinConfigurations = {
+          bridge = mkDarwin {
+            name = "bridge";
+            username = "erik.jenks";
+            system = "aarch64-darwin";
+            features = [ ];
+            homeFeatures = [ "cli" "ide-full" "aws" "k8s" "iac" "ruby" ];
+          };
+        };
 
         nixosConfigurations = { };
       };
     };
-
-  # outputs = { nixpkgs, nixpkgs-unstable, home-manager, nix-npm-buildpackage, flake-utils, devenv, ... }@inputs:
-  #   let
-  #     lib = import ./lib { inherit inputs; };
-  #     inherit (lib) mkHome;
-  #
-  #     # Bring some functions into scope (from builtins and other flakes)
-  #     inherit (builtins) attrValues;
-  #     inherit (flake-utils.lib) eachSystemMap defaultSystems;
-  #     eachDefaultSystemMap = eachSystemMap defaultSystems;
-  #   in
-  #   rec {
-  #     # If you want to use packages exported from other flakes, add their overlays here.
-  #     # They will be added to your 'pkgs'
-  #     overlays = {
-  #       default = import ./overlay {
-  #         inherit nixpkgs devenv;
-  #       }; # Our own overlay
-  #       nix-npm-buildpackage = nix-npm-buildpackage.overlays.default;
-  #     };
-  #
-  #     # Home configurations
-  #     # Accessible via 'home-manager'
-  #     homeConfigurations = {
-  #       "bridge" = mkHome {
-  #         name = "bridge";
-  #         username = "erik.jenks";
-  #         homeDirectory = "/Users/erik.jenks";
-  #         system = "aarch64-darwin";
-  #         features = [ "cli" "ide-full" "aws" "k8s" "iac" "ruby"];
-  #       };
-  #     };
-  #
-  #     # Packages
-  #     # Accessible via 'nix build'
-  #     packages = eachDefaultSystemMap (system:
-  #       # Propagate nixpkgs' packages, with our overlays applied
-  #       import nixpkgs { inherit system; overlays = attrValues overlays; config.allowUnfree = true; }
-  #     );
-  #
-  #     packages-unstable = eachDefaultSystemMap (system:
-  #       import nixpkgs-unstable { inherit system; overlays = attrValues overlays; config.allowUnfree = true; }
-  #     );
-  #
-  #     # Devshell for bootstrapping
-  #     # Accessible via 'nix develop'
-  #     devShells = eachDefaultSystemMap (system: {
-  #       default = import ./shell.nix { pkgs = packages.${system}; };
-  #     });
-  #   };
 }
