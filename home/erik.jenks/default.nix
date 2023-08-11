@@ -1,4 +1,4 @@
-{ inputs, lib, username, homeDirectory, features, ... }:
+{ inputs, lib, username, features, ... }:
 
 let
   inherit (builtins) map pathExists filter;
@@ -9,11 +9,7 @@ in
 
   nixpkgs.config.allowUnfree = true;
   systemd.user.startServices = "sd-switch";
-  programs.home-manager.enable = true;
   programs.git.enable = true;
 
-  home = {
-    inherit username homeDirectory;
-    stateVersion = "23.05";
-  };
+  home.stateVersion = "23.05";
 }

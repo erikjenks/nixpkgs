@@ -1,4 +1,4 @@
-{ pkgs, name, lib, homeDirectory, ... }:
+{ pkgs, name, lib, username, ... }:
 
 {
   programs.zsh = {
@@ -21,7 +21,7 @@
 
     zplug = {
       enable = true;
-      plugins = [];
+      plugins = [ ];
     };
   };
 
@@ -53,8 +53,8 @@
 
   home.shellAliases = {
     cat = "bat";
-    reload = "home-manager switch --flake '${homeDirectory}/.config/nixpkgs#${name}' && source ~/.zshrc";
-    nixpkgs = "cd ${homeDirectory}/.config/nixpkgs";
+    reload = "home-manager switch --flake '/Users/${username}/.config/nixpkgs#${name}' && source ~/.zshrc";
+    nixpkgs = "cd /Users/${username}/.config/nixpkgs";
   };
 }
 
