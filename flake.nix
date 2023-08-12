@@ -70,6 +70,14 @@
             features = [ ];
             homeFeatures = [ "cli" "ide-full" "aws" "k8s" "iac" "ruby" ];
           };
+
+          erik.home = mkDarwin {
+            name = "erik.home";
+            username = "Erik";
+            system = "x86_64-darwin";
+            features = [  ];
+            homeFeatures = [ "cli" "ide-full" "aws" "k8s" "iac" ];
+          }
         };
 
         nixosConfigurations = { };
