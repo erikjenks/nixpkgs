@@ -53,8 +53,8 @@
 
   home.shellAliases = {
     cat = "bat";
-    reload = "home-manager switch --flake '${homeDirectory}/.config/nixpkgs#${name}' && source ~/.zshrc";
-    nixpkgs = "cd ${homeDirectory}/.config/nixpkgs";
+#    reload = "home-manager switch --flake '${homeDirectory}/.config/nixpkgs#${name}' && source ~/.zshrc";
+    nixpkgs = "cd ~/.config/nixpkgs";
     rgf = "rg --files | rg";
   };
 }
