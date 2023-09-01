@@ -8,7 +8,7 @@
     ignores = [
       ".direnv"
       ".direnv/*"
-      ".devenv"
+      ".devenv/"
       ".devenv/*"
       ".devenv.*"
       ".envrc"

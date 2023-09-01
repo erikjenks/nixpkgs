@@ -9,6 +9,7 @@
     ripgrep
     rnix-lsp
     tree-sitter
+    yarn
   ];
 
   home.shellAliases = {
