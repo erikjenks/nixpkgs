@@ -11,7 +11,6 @@
     tree-sitter
     yarn
     python
-    python2
   ];
 
   home.shellAliases = {
