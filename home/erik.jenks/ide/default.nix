@@ -10,7 +10,6 @@
     rnix-lsp
     tree-sitter
     yarn
-    python
   ];
 
   home.shellAliases = {
