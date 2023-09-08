@@ -45,6 +45,7 @@ rec {
 
       specialArgs = {
         inherit inputs name username features;
+        buildName = name;
         unstable = import nixpkgs-unstable { inherit system; nixpkgs.config.allowUnfree = true; };
       };
     };

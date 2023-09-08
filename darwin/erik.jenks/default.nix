@@ -1,4 +1,4 @@
-{ username, pkgs, features, ... }:
+{ username, pkgs, features, buildName, ... }:
 
 let
   inherit (builtins) map pathExists filter;
@@ -24,6 +24,9 @@ in
   environment = {
     shells = with pkgs; [ zsh ];
     loginShell = pkgs.zsh;
+    shellAliases = {
+        reload = "nix run nix-darwin -- switch --flake ~/src/github.com/erikjenks/nixpkgs#{buildName}";
+      };
   };
 
   fonts.fontDir.enable = true;
