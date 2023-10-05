@@ -20,6 +20,7 @@
     rclone
     exercism
     httpie
+    timer
   ];
 
   programs.oh-my-posh = {

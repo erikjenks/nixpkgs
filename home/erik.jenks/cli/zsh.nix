@@ -33,7 +33,6 @@
   programs.direnv.nix-direnv.enable = true;
   programs.fzf.enable = true;
   programs.fzf.enableZshIntegration = true;
-  programs.timer.enable = true;
 
   programs.bat = {
     enable = true;
