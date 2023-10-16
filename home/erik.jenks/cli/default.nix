@@ -21,6 +21,7 @@
     exercism
     httpie
     timer
+    act
   ];
 
   programs.oh-my-posh = {
