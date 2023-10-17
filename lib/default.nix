@@ -63,6 +63,7 @@ rec {
         ];
       };
       modules = [
+        ../home/modules/pam-tid
         ../home/${username}
         {
           home = {
