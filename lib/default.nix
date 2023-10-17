@@ -63,7 +63,6 @@ rec {
         ];
       };
       modules = [
-        ../home/modules/pam-tid
         ../home/${username}
         {
           home = {
@@ -96,6 +95,7 @@ rec {
         config.allowUnfree = true;
       };
       modules = [
+        ../home/modules/pam-tid
         ../darwin/${username}
         home-manager.darwinModules.home-manager
         {
