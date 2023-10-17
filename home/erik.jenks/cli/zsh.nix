@@ -1,4 +1,4 @@
-{ pkgs, name, lib, username, ... }:
+{ pkgs, name, lib, username, homeDirectory, ... }:
 
 {
   programs.zsh = {
