@@ -84,7 +84,7 @@ rec {
     , system
     , features ? [ ]
     , homeFeatures ? [ ]
-    }: darwinSystem {
+    }: darwinSystem rec {
       inherit system;
       pkgs = import nixpkgs {
         inherit system;
@@ -95,6 +95,7 @@ rec {
         config.allowUnfree = true;
       };
       modules = [
+        ../darwin/modules/pam-tid
         ../darwin/${username}
         home-manager.darwinModules.home-manager
         {
@@ -105,6 +106,7 @@ rec {
               inherit inputs outputs username;
               features = homeFeatures;
               unstable = import nixpkgs-unstable { inherit system; };
+              homeDirectory = if pkgs.stdenv.isDarwin then "/Users/${username}" else "/home/${username}";
             };
             users.${username} = import ../home/${username};
           };

@@ -47,7 +47,8 @@ in
     trackpad.Dragging = true;
   };
 
-  security.pam.enableSudoTouchIdAuth = true;
+  # security.pam.enableSudoTouchIdAuth = true;
+  security.pam.touchIdAuth.enable = true;
 
   system.stateVersion = 4;
 }
