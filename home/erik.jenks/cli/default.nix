@@ -21,7 +21,7 @@
     exercism
     httpie
     timer
-    act
+    steampipe
   ];
 
   programs.oh-my-posh = {
