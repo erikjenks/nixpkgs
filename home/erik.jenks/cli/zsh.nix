@@ -56,6 +56,8 @@
 #    reload = "home-manager switch --flake '${homeDirectory}/.config/nixpkgs#${name}' && source ~/.zshrc";
     nixpkgs = "cd ~/.config/nixpkgs";
     rgf = "rg --files | rg";
+    ghc="gh copilot";
+    tld="truss-local doctor";
   };
 }
 

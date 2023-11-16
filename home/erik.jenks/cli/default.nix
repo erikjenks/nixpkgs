@@ -22,6 +22,7 @@
     httpie
     timer
     steampipe
+    gh
   ];
 
   programs.oh-my-posh = {
