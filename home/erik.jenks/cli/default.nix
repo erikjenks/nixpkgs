@@ -9,6 +9,7 @@
   home.packages = with pkgs; [
     ripgrep
     jq
+    yq
     enc
     gum
     htop
