@@ -7,6 +7,7 @@
     ./unstable.nix
   ];
   home.packages = with pkgs; [
+    asdf-vm
     ripgrep
     jq
     enc
@@ -19,7 +20,6 @@
     devenv
     rclone
     exercism
-    httpie
   ];
 
   programs.oh-my-posh = {

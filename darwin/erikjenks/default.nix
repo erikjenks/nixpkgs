@@ -20,7 +20,12 @@ in
     home = "/Users/${username}";
   };
 
-  programs.zsh.enable = true;
+  programs.zsh = {
+    enable = true;
+    initExtra = ''
+     . "${pkgs.asdf-vm}/share/asdf-vm/asdf.sh"
+    ''
+  };
   environment = {
     shells = with pkgs; [ zsh ];
     loginShell = pkgs.zsh;
