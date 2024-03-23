@@ -72,6 +72,25 @@
           };
         };
 
+				homeConfigurations = {
+          home = mkHome {
+            name = "home";
+            username = "erikjenks";
+            system = "aarch64-darwin";
+            features = [ "cli" "ide-full" "aws" "k8s" "iac" "ruby" ];
+          };
+        };
+
+        darwinConfigurations = {
+          home = mkDarwin {
+            name = "home";
+            username = "erikjenks";
+            system = "aarch64-darwin";
+            features = [ ];
+            homeFeatures = [ "cli" "ide-full" "aws" "k8s" "iac" "ruby" ];
+          };
+        };
+
         nixosConfigurations = { };
       };
     };
