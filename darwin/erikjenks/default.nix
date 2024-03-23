@@ -24,7 +24,7 @@ in
     enable = true;
     initExtra = ''
      . "${pkgs.asdf-vm}/share/asdf-vm/asdf.sh"
-    ''
+    '';
   };
   environment = {
     shells = with pkgs; [ zsh ];
