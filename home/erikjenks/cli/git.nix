@@ -26,6 +26,10 @@
 
   home.shellAliases = {
     gcd = "dst=$(ghq list | fzf --height=~10) && cd $(ghq root)/$dst";
+    gs = "git status";
+    gb = "git branch";
+    gbc = "git branch --checkout";
+    gco = "git checkout";
   };
 
 }
