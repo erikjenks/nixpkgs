@@ -8,6 +8,7 @@
     mkcert
     asciinema
     postgresql
+    redis
   ] ++ (with unstable; [
     ## 
   ]);
