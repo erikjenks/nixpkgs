@@ -13,8 +13,8 @@
   home.file.".config/nvim".source = pkgs.fetchFromGitHub {
     owner = "AstroNvim";
     repo = "AstroNvim";
-    rev = "v3.23.1";
-    sha256 = "sha256-7od4BIubFTTe0qWOEH9V/2DuhD3ntBJmjicQMEH2TBI=";
+    rev = "v3.37.12";
+    sha256 = "sha256-cC1isyscpvNQ07n/Eb6rlfvuQ/K+7mCjdGJq4m/PUHk=";
   };
 
   home.file.".config/nvim/lua/user/".recursive = true;

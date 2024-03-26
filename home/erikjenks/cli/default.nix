@@ -19,7 +19,8 @@
     cachix
     devenv
     rclone
-    exercism
+    shared-mime-info
+    libpqxx
   ];
 
   programs.oh-my-posh = {
