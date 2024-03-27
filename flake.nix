@@ -77,7 +77,7 @@
             name = "home";
             username = "erikjenks";
             system = "aarch64-darwin";
-            features = [ "cli" "ide-full" "aws" "k8s" "iac" "ruby" ];
+            features = [ "cli" "ide-full" "aws" "k8s" ];
           };
         };
 

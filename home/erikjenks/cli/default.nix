@@ -21,6 +21,7 @@
     rclone
     shared-mime-info
     libpqxx
+    yarn
   ];
 
   programs.oh-my-posh = {
