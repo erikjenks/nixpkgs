@@ -22,6 +22,7 @@
     shared-mime-info
     libpqxx
     yarn
+    heroku
   ];
 
   programs.oh-my-posh = {
