@@ -1,12 +1,11 @@
-{ pkgs, unstable, ... }: {
+{ pkgs, inputs, ... }: {
   home.packages = with pkgs; [
     vault
     pulumi-bin
     pulumictl
     terragrunt
-  ] ++ (with unstable; [
-    truss-cli
-  ]);
+    inputs.adamgoose.packages.${pkgs.system}.truss-cli
+  ];
 
   programs.zsh = {
     oh-my-zsh.plugins = [

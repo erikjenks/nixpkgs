@@ -1,6 +1,6 @@
 { inputs, ... }:
 let
-  inherit (inputs) self home-manager darwin devenv adamgoose nixpkgs nixpkgs-unstable;
+  inherit (inputs) self home-manager darwin devenv nixpkgs nixpkgs-unstable;
   inherit (self) outputs;
   inherit (nixpkgs.lib) nixosSystem;
   inherit (home-manager.lib) homeManagerConfiguration;
@@ -22,8 +22,8 @@ rec {
       modules = [
         {
           nixpkgs.overlays = [
+            devenv.overlays.default
             outputs.overlays.default
-            adamgoose.overlays.default
           ];
           system.stateVersion = stateVersion;
         }
@@ -58,8 +58,8 @@ rec {
       pkgs = import nixpkgs {
         inherit system;
         overlays = [
+          devenv.overlays.default
           outputs.overlays.default
-          adamgoose.overlays.default
         ];
       };
       modules = [
@@ -89,8 +89,8 @@ rec {
       pkgs = import nixpkgs {
         inherit system;
         overlays = [
+          devenv.overlays.default
           outputs.overlays.default
-          adamgoose.overlays.default
         ];
         config.allowUnfree = true;
       };
