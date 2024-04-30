@@ -8,11 +8,11 @@
 
   inputs = {
     # Nixpkgs
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     # Home manager
-    home-manager.url = "github:nix-community/home-manager/release-23.05";
+    home-manager.url = "github:nix-community/home-manager/release-23.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     # Nix Darwin
@@ -24,7 +24,7 @@
     devenv.url = "github:cachix/devenv/latest";
 
     # Adam's Flake
-    adamgoose.url = "github:adamgoose/nixpkgs/23.05";
+    adamgoose.url = "github:adamgoose/nixpkgs/23.11";
     adamgoose.inputs.nixpkgs.follows = "nixpkgs";
     adamgoose.inputs.devenv.follows = "devenv";
   };
@@ -67,12 +67,12 @@
             name = "bridge";
             username = "erik.jenks";
             system = "aarch64-darwin";
-            features = [ ];
+            features = [ "netskope" ];
             homeFeatures = [ "cli" "ide-full" "aws" "k8s" "iac" "ruby" ];
           };
         };
 
-				homeConfigurations = {
+        homeConfigurations = {
           home = mkHome {
             name = "home";
             username = "erikjenks";
