@@ -60,6 +60,7 @@
     rgf = "rg --files | rg";
     ghc="gh copilot";
     tld="truss-local doctor";
+    tltu="truss-local tilt up";
   };
 }
 
