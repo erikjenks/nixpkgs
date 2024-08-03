@@ -17,6 +17,7 @@
       ghq = {
         root = "~/src";
       };
+      pager.branch = false;
     };
   };
 
@@ -28,7 +29,7 @@
     gcd = "dst=$(ghq list | fzf --height=~10) && cd $(ghq root)/$dst";
     gs = "git status";
     gb = "git branch";
-    gbc = "git branch --checkout";
+    gbc = "git checkout -b";
     gco = "git checkout";
   };
 
