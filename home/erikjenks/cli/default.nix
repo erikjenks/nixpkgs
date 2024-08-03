@@ -23,7 +23,6 @@
     libpqxx
     yarn
     heroku
-    youtube-dl
   ];
 
   programs.oh-my-posh = {
