@@ -27,6 +27,7 @@
 
   home.sessionVariables = {
     EDITOR = "nvim";
+    COREPACK_ENABLE_AUTO_PIN = 0;
   };
 
   programs.direnv.enable = true;
