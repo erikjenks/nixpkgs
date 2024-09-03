@@ -16,7 +16,7 @@ in {
     '';
   };
 
-  home-manager.users.${username}.home.sessionVariables = {
+  home.sessionVariables = {
     AWS_CA_BUNDLE = bundlePath;
     NETSKOPE_CA_BUNDLE = bundlePath;
     NODE_EXTRA_CA_CERTS = bundlePath;
