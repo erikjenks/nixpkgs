@@ -62,6 +62,7 @@
     ghc="gh copilot";
     tld="truss-local doctor";
     tltu="truss-local tilt up";
+    lsf="ls -p | grep -v /";
   };
 }
 

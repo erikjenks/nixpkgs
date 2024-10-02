@@ -5,7 +5,6 @@
     ./tmux.nix
     ./zsh.nix
     ./unstable.nix
-    ./netskope.nix
   ];
   home.packages = with pkgs; [
     ripgrep
