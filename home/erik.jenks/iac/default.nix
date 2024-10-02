@@ -1,6 +1,6 @@
 { pkgs, inputs, ... }: {
   home.packages = with pkgs; [
-    vault
+    vault-bin
     pulumi-bin
     pulumictl
     terragrunt

@@ -7,7 +7,6 @@
     nodejs
     lazygit
     ripgrep
-    rnix-lsp
     tree-sitter
   ];
 
