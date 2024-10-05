@@ -23,6 +23,7 @@
     libpqxx
     yarn
     heroku
+    ffmpeg
   ];
 
   programs.oh-my-posh = {
