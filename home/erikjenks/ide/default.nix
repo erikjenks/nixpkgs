@@ -1,6 +1,7 @@
 { pkgs, ... }: {
   imports = [
     ./astrovim.nix
+    ./zellij.nix
   ];
 
   home.packages = with pkgs; [

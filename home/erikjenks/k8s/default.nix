@@ -1,4 +1,4 @@
-{ pkgs, unstable, ... }: {
+{ pkgs, unstable, inputs, ... }: {
   home.packages = with pkgs; [
     k9s
     tilt
