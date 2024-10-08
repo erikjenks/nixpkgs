@@ -68,7 +68,7 @@
             username = "erik.jenks";
             system = "aarch64-darwin";
             features = [ "netskope" ];
-            homeFeatures = [ "cli" "ide-full" "aws" "k8s" "iac" "ruby" ];
+            homeFeatures = [ "cli" "ide-full" "aws" "k8s" "iac" "ruby" "wezterm" ];
           };
         };
 
