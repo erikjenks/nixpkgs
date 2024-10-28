@@ -7,7 +7,6 @@
     ./unstable.nix
   ];
   home.packages = with pkgs; [
-    asdf-vm
     ripgrep
     jq
     enc
@@ -15,11 +14,11 @@
     htop
     wget
     xplr
-    doggo
     cachix
     devenv
     rclone
     exercism
+    keka
   ];
 
   programs.oh-my-posh = {
