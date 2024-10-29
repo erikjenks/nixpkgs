@@ -19,6 +19,7 @@
     rclone
     exercism
     keka
+    heroku
   ];
 
   programs.oh-my-posh = {
