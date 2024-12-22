@@ -26,7 +26,6 @@
     # Adam's Flake
     adamgoose.url = "github:adamgoose/nixpkgs/24.05";
     adamgoose.inputs.nixpkgs.follows = "nixpkgs";
-    adamgoose.inputs.devenv.follows = "devenv";
   };
 
   outputs = inputs@{ nixpkgs, devenv, flake-parts, home-manager, ... }:

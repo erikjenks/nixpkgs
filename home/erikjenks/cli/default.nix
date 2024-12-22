@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ inputs, pkgs, ... }: {
   imports = [
     ./git.nix
     ./ssh.nix
@@ -15,11 +15,11 @@
     wget
     xplr
     cachix
-    devenv
     rclone
     exercism
     keka
     heroku
+    inputs.devenv.packages.${pkgs.system}.default
   ];
 
   programs.oh-my-posh = {

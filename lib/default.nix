@@ -22,7 +22,6 @@ rec {
       modules = [
         {
           nixpkgs.overlays = [
-            devenv.overlays.default
             outputs.overlays.default
           ];
           system.stateVersion = stateVersion;
@@ -59,7 +58,6 @@ rec {
       pkgs = import nixpkgs {
         inherit system;
         overlays = [
-          devenv.overlays.default
           outputs.overlays.default
         ];
       };
