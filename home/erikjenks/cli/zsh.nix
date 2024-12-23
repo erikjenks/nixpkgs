@@ -58,6 +58,7 @@
     reload = "home-manager switch --flake '${homeDirectory}/.config/nixpkgs#${name}' && source ~/.zshrc";
     nixpkgs = "cd ${homeDirectory}/.config/nixpkgs";
     rgf = "rg --files | rg";
+    dc = "docker compose";
   };
 }
 

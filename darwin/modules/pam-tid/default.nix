@@ -1,8 +1,5 @@
 { config, lib, pkgs, ... }:
 
-# This is a modified version of the original nix-darwin pam module.
-# https://github.com/LnL7/nix-darwin/pull/787/commits/93bcd7010c28c3134405516004aa7d48dcf5f498
-
 with lib;
 let
   cfg = config.security.pam;
@@ -10,11 +7,12 @@ let
     sudo_file=/etc/pam.d/sudo
     sudo_local_file=/etc/pam.d/sudo_local
     tid_file=/etc/pam.d/nix-darwin-touchIdAuth
+    
     del_tid() {
       local first=1
       local f
       for f; do
-        if [[ ! -e $f ]]; then
+        if [[ ! -e "$f" ]]; then
           continue
         fi
         if [[ -n $first ]]; then
@@ -35,46 +33,50 @@ let
         ' "$@"
       fi
     }
+    
     ensure_include() {
       local f="$1"
       local inc="$2"
-      local found=""
-      if [[ -e $f ]]; then
-        found=$(${pkgs.gawk}/bin/awk -v inc="$inc" '!/^[[:space:]]*#/ && NF {
+      local found
+      if [[ -e "$f" ]]; then
+        found="$(${pkgs.gawk}/bin/awk -v inc="$inc" '!/^[[:space:]]*#/ && NF {
           if ($1 == "auth" && $2 == "include" && $3 == inc) {
             print 1
             exit
           }
-        }' "$f")
+        }' "$f")"
       fi
-      if [[ -z $found ]]; then
+      if [[ -z "$found" ]]; then
         add_at_top "$f" "auth       include        $inc"
       fi
     }
+    
     add_at_top() {
       local f="$1"
       local s="$2"
-      if [[ -s $f ]]; then
+      if [[ -s "$f" ]]; then
         ${pkgs.gawk}/bin/awk -i inplace -v s="$s" '
           BEGINFILE { print s }
           { print }
         ' "$f"
       else
-        echo "$s" >"$f"
+        printf '%s\n' "$s" > "$f"
       fi
     }
+    
     ensure_content() {
       local f="$1"
-      local content="$(cat)"
-      if [[ ! -e $f ]] || [[ "$(< "$f")" != "$content" ]]; then
-        echo "$content" >"$f"
+      local content
+      content="$(cat)"
+      if [[ ! -e "$f" ]] || ! cmp -s <(echo "$content") "$f"; then
+        printf '%s\n' "$content" > "$f"
       fi
     }
 
     # sudo settings
     del_tid "$sudo_file" "$sudo_local_file"
-    ensure_include "$sudo_file" $(basename "$sudo_local_file")
-    ensure_include "$sudo_local_file" $(basename "$tid_file")
+    ensure_include "$sudo_file" "$(basename "$sudo_local_file")"
+    ensure_include "$sudo_local_file" "$(basename "$tid_file")"
     ensure_content "$tid_file" <<'EOF'
     ${optionalString
       (cfg.touchIdAuth.enable && cfg.touchIdAuth.reattach.enable)
@@ -86,10 +88,11 @@ let
       cfg.touchIdAuth.enable
       "auth       sufficient     pam_tid.so"
     }
-    EOF
+EOF
   '';
 in
 {
+  # Options remain the same
   options.security.pam = {
     touchIdAuth.enable = mkEnableOption (lib.mdDoc ''
       sudo authentication with Touch ID
@@ -125,6 +128,7 @@ in
       '';
     };
   };
+
   config = {
     system.activationScripts.pam.text = ''
       # PAM settings

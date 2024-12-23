@@ -23,7 +23,6 @@ in
   programs.zsh.enable = true;
   environment = {
     shells = with pkgs; [ zsh ];
-    loginShell = pkgs.zsh;
   };
 
   fonts.packages = with pkgs; [
