@@ -11,5 +11,5 @@ in
   systemd.user.startServices = "sd-switch";
   programs.git.enable = true;
 
-  home.stateVersion = "23.05";
+  home.stateVersion = "24.05";
 }

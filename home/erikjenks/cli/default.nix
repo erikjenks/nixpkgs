@@ -17,7 +17,6 @@
     cachix
     rclone
     exercism
-    keka
     heroku
     inputs.devenv.packages.${pkgs.system}.default
   ];

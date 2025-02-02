@@ -9,6 +9,7 @@
     lazygit
     ripgrep
     tree-sitter
+    ffmpeg
   ];
 
   home.shellAliases = {
