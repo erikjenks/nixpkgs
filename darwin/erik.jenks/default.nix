@@ -10,7 +10,7 @@ in
   nix = {
     useDaemon = true;
     extraOptions = ''
-      experimental-features = nix-command flakes repl-flake
+      experimental-features = nix-command flakes
       trusted-users = root ${username}
     '';
   };
@@ -50,7 +50,7 @@ in
   };
 
   # security.pam.enableSudoTouchIdAuth = true;
-  security.pam.touchIdAuth.enable = true;
+  # security.pam.touchIdAuth.enable = true;
 
   system.stateVersion = 4;
 }

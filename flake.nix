@@ -8,11 +8,11 @@
 
   inputs = {
     # Nixpkgs
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     # Home manager
-    home-manager.url = "github:nix-community/home-manager/release-24.05";
+    home-manager.url = "github:nix-community/home-manager/release-24.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     # Nix Darwin
@@ -21,10 +21,10 @@
 
     # Other Tools
     flake-parts.url = "github:hercules-ci/flake-parts";
-    devenv.url = "github:cachix/devenv/latest";
+    devenv.url = "github:cachix/devenv/v1.3.1";
 
     # Adam's Flake
-    adamgoose.url = "github:adamgoose/nixpkgs/24.05";
+    adamgoose.url = "github:adamgoose/nixpkgs/24.11";
     adamgoose.inputs.nixpkgs.follows = "nixpkgs";
   };
 
