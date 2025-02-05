@@ -23,7 +23,6 @@ in
   programs.zsh.enable = true;
   environment = {
     shells = with pkgs; [ zsh ];
-    loginShell = pkgs.zsh;
     shellAliases = {
         reload = "nix run nix-darwin -- switch --flake ~/src/github.com/erikjenks/nixpkgs#{buildName}";
       };
