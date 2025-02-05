@@ -1,7 +1,7 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   imports = [
-    ./astrovim.nix
     ./zellij.nix
+    ./helix.nix
   ];
 
   home.packages = with pkgs; [
@@ -21,10 +21,12 @@
     NODE_VERSION_PREFIX = "v";
   };
 
-  programs.zsh.oh-my-zsh.plugins = [ "npm" "nvm" ];
-  programs.zsh.zplug.plugins = [{
-    name = "lukechilds/zsh-nvm";
-  }];
+  programs.zsh.oh-my-zsh.plugins = ["npm" "nvm"];
+  programs.zsh.zplug.plugins = [
+    {
+      name = "lukechilds/zsh-nvm";
+    }
+  ];
 
   home.file.".config/lazygit/config.yml".source = ./files/lazygit.yml;
 }

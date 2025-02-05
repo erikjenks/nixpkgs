@@ -1,6 +1,11 @@
-{ pkgs, name, lib, username, homeDirectory, ... }:
-
 {
+  pkgs,
+  name,
+  lib,
+  username,
+  homeDirectory,
+  ...
+}: {
   programs.zsh = {
     enable = true;
     autosuggestion.enable = true;
@@ -8,24 +13,24 @@
     oh-my-zsh = {
       enable = true;
       custom = "$HOME/.oh-my-zsh/custom";
-      plugins = [
-        "direnv"
-        "fzf"
-        "git"
-        "vi-mode"
-      ]
-      ++ lib.lists.optional (pkgs.stdenv.isDarwin) "macos"
-      ;
+      plugins =
+        [
+          "direnv"
+          "fzf"
+          "git"
+          "vi-mode"
+        ]
+        ++ lib.lists.optional (pkgs.stdenv.isDarwin) "macos";
     };
 
     zplug = {
       enable = true;
-      plugins = [ ];
+      plugins = [];
     };
   };
 
   home.sessionVariables = {
-    EDITOR = "nvim";
+    EDITOR = "hx";
     COREPACK_ENABLE_AUTO_PIN = 0;
   };
 
@@ -55,13 +60,12 @@
 
   home.shellAliases = {
     cat = "bat";
-#    reload = "home-manager switch --flake '${homeDirectory}/.config/nixpkgs#${name}' && source ~/.zshrc";
+    #    reload = "home-manager switch --flake '${homeDirectory}/.config/nixpkgs#${name}' && source ~/.zshrc";
     nixpkgs = "cd ~/.config/nixpkgs";
     rgf = "rg --files | rg";
-    ghc="gh copilot";
-    tld="truss-local doctor";
-    tltu="truss-local tilt up";
-    lsf="ls -p | grep -v /";
+    ghc = "gh copilot";
+    tld = "truss-local doctor";
+    tltu = "truss-local tilt up";
+    lsf = "ls -p | grep -v /";
   };
 }
-
