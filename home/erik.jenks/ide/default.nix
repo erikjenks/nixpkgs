@@ -2,6 +2,7 @@
   imports = [
     ./astrovim.nix
     ./zellij.nix
+    ./helix.nix
   ];
 
   home.packages = with pkgs; [
@@ -9,6 +10,7 @@
     lazygit
     ripgrep
     tree-sitter
+    ffmpeg
   ];
 
   home.shellAliases = {
