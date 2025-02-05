@@ -1,97 +1,63 @@
 {
-  description = "Nix System Config";
-
-  nixConfig = {
-    extra-trusted-public-keys = "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw=";
-    extra-substituters = "https://devenv.cachix.org";
-  };
+  description = "My Nix configurations";
 
   inputs = {
-    # Nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
+    nixos.follows = "nixpkgs";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    # Home manager
+    std.url = "github:divnix/std";
+    std.inputs.nixpkgs.follows = "nixpkgs";
+
     home-manager.url = "github:nix-community/home-manager/release-24.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    # Nix Darwin
     darwin.url = "github:lnl7/nix-darwin/nix-darwin-24.11";
     darwin.inputs.nixpkgs.follows = "nixpkgs";
 
-    # Other Tools
-    flake-parts.url = "github:hercules-ci/flake-parts";
     devenv.url = "github:cachix/devenv/v1.3.1";
-
-    # Adam's Flake
-    adamgoose.url = "github:adamgoose/nixpkgs/24.11";
-    adamgoose.inputs.nixpkgs.follows = "nixpkgs";
+    zjstatus.url = "github:dj95/zjstatus/v0.19.1";
   };
 
-  outputs = inputs@{ nixpkgs, devenv, flake-parts, home-manager, ... }:
-    let
-      lib = import ./lib { inherit inputs; };
-      inherit (lib) mkHome mkDarwin mkSystem;
-      inherit (flake-parts.lib) mkFlake;
-    in
-    mkFlake { inherit inputs; } {
-      systems = [ "x86_64-linux" "aarch64-linux" "aarch64-darwin" "x86_64-darwin" ];
-      perSystem = { config, self', inputs', pkgs, system, ... }: {
-        packages = import ./pkgs { inherit pkgs; };
+  outputs = {std, ...} @ inputs:
+    std.growOn
+    {
+      inherit inputs;
+      cellsFrom = ./nix;
+      cellBlocks = with std.blockTypes; [
+        (installables "packages")
 
-        devShells = {
-          default = pkgs.mkShell {
-            nativeBuildInputs = [
-              inputs'.home-manager.packages.home-manager
-            ];
-          };
-        };
+        (functions "lib")
+        (functions "homeModules")
+        (functions "darwinModules")
+        (functions "darwinConfigurations")
+
+        (pkgs "nixpkgs")
+      ];
+      nixpkgsConfig = {
+        allowUnfree = true;
       };
-      
-      flake = {
-        overlays.default = import ./overlay {
-          inherit nixpkgs;
-        };
+    }
+    {
+      packages = std.harvest (inputs.self) [
+        ["kubeswitch" "packages"]
+        ["kubetap" "packages"]
+        ["truss-cli" "packages"]
+      ];
 
-        homeConfigurations = {
-          bridge = mkHome {
-            name = "bridge";
-            username = "erik.jenks";
-            system = "aarch64-darwin";
-            features = [ "cli" "ide-full" "aws" "k8s" "iac" "ruby" ];
-          };
-        };
-
-        darwinConfigurations = {
-          bridge = mkDarwin {
-            name = "bridge";
-            username = "erik.jenks";
-            system = "aarch64-darwin";
-            features = [ "netskope" ];
-            homeFeatures = [ "cli" "ide-full" "aws" "k8s" "iac" "ruby" "wezterm" ];
-          };
-        };
-
-        homeConfigurations = {
-          home = mkHome {
-            name = "home";
-            username = "erikjenks";
-            system = "aarch64-darwin";
-            features = [ "cli" "ide-full" "aws" "k8s" ];
-          };
-        };
-
-        darwinConfigurations = {
-          home = mkDarwin {
-            name = "home";
-            username = "erikjenks";
-            system = "aarch64-darwin";
-            features = [ ];
-            homeFeatures = [ "cli" "ide-full" "aws" "k8s" "wezterm" ];
-          };
-        };
-
-        nixosConfigurations = { };
-      };
+      darwinConfigurations =
+        (std.harvest (inputs.self) [
+          ["erik" "darwinConfigurations"]
+        ])
+        .aarch64-darwin;
     };
+
+  nixConfig = {
+    extra-substituters = [
+      "https://devenv.cachix.org"
+    ];
+    extra-trusted-public-keys = [
+      "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
+    ];
+  };
 }
