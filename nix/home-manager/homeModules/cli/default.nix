@@ -41,6 +41,6 @@
 
   home.shellAliases = {
     cat = "bat";
-    # nixpkgs = "cd ~/src/github.com/adamgoose/nixpkgs";
+    nixpkgs = "cd ~/.config/nixpkgs";
   };
 }

@@ -20,4 +20,10 @@
   home.packages = with pkgs; [
     ghq
   ];
+  home.shellAliases = {
+    gbc = "git checkout -b";
+    gco = "git checkout";
+    gl = "git pull";
+    gbd = "git branch -d";
+  };
 }
