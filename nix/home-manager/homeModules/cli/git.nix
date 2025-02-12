@@ -25,5 +25,8 @@
     gco = "git checkout";
     gl = "git pull";
     gbd = "git branch -d";
+    gb = "git branch";
+    gcm = "git checkout $(git remote show origin | awk \"/HEAD branch/ {print \$NF}\")";
+    gs = "git status";
   };
 }
