@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
     vault-bin
+    pulumi-bin
   ];
 
   programs.zsh = {

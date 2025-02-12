@@ -11,8 +11,8 @@
 
   home.sessionVariables = {
     AWS_VAULT_BACKEND = "pass";
-    AWS_VAULT_PASS_PASSWORD_STORE_DIR = "$XDG_DATA_HOME/password-store";
-    PASSWORD_STORE_DIR = "$XDG_DATA_HOME/password-store";
+    AWS_VAULT_PASS_PASSWORD_STORE_DIR = "$HOME/.local/share/password-store";
+    PASSWORD_STORE_DIR = "$HOME/.local/share/password-store";
   };
   programs.zsh.oh-my-zsh.plugins = [
     "aws"
