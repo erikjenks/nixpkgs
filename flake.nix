@@ -17,6 +17,7 @@
 
     devenv.url = "github:cachix/devenv/v1.3.1";
     zjstatus.url = "github:dj95/zjstatus/v0.19.1";
+    helix.url = "github:helix-editor/helix";
   };
 
   outputs = {std, ...} @ inputs:
@@ -55,9 +56,11 @@
   nixConfig = {
     extra-substituters = [
       "https://devenv.cachix.org"
+      "https://helix.cachix.org"
     ];
     extra-trusted-public-keys = [
       "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
+      "helix.cachix.org-1:ejp9KQpR1FBI2onstMQ34yogDm4OgU2ru6lIwPvuCVs="
     ];
   };
 }
