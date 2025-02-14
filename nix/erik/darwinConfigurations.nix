@@ -18,6 +18,7 @@ in {
       helix
       ide-full
       wezterm
+      raycast
       (themes.homeModules.catppuccin {flavor = "macchiato";})
     ];
     darwinModules = with darwinModules; [
@@ -40,6 +41,7 @@ in {
       helix
       ide-full
       wezterm
+      raycast
       cell.homeModules.bridge
       (themes.homeModules.catppuccin {flavor = "macchiato";})
     ];

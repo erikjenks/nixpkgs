@@ -18,6 +18,11 @@
           check-further-callbacks = false;
         }
         {
+          "if".app-id = "com.raycast.macos";
+          "if".window-title-regex-substring = "AI Chat";
+          run = ["layout tiling"];
+        }
+        {
           "if".workspace = "1";
           run = ["move-node-to-workspace 2"];
         }
