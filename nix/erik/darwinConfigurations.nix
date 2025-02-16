@@ -24,7 +24,7 @@ in {
     darwinModules = with darwinModules; [
       fonts
       preferences
-      aerospace
+      # aerospace
       # sketchybar
       # skhd
       # yabai
