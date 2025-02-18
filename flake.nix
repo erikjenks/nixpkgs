@@ -16,7 +16,7 @@
     darwin.inputs.nixpkgs.follows = "nixpkgs";
 
     devenv.url = "github:cachix/devenv/v1.3.1";
-    zjstatus.url = "github:dj95/zjstatus/v0.19.1";
+    # zjstatus.url = "github:dj95/zjstatus/v0.19.1";
     helix.url = "github:helix-editor/helix";
   };
 
@@ -57,10 +57,12 @@
     extra-substituters = [
       "https://devenv.cachix.org"
       "https://helix.cachix.org"
+      "https://cache.garnix.io"
     ];
     extra-trusted-public-keys = [
       "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
       "helix.cachix.org-1:ejp9KQpR1FBI2onstMQ34yogDm4OgU2ru6lIwPvuCVs="
+      "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g="
     ];
   };
 }
