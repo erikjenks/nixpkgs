@@ -15,6 +15,7 @@
     doggo
     unzip
     watch
+    ffmpeg
     cachix
     httpie
     rclone
@@ -42,5 +43,6 @@
   home.shellAliases = {
     cat = "bat";
     nixpkgs = "cd ~/.config/nixpkgs";
+    yt = "yt-dlp";
   };
 }

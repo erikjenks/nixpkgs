@@ -10,7 +10,6 @@ in {
   "erik@home" = cell.lib.mkDarwinSystem {
     username = "erikjenks";
     homeModules = with homeModules; [
-      # wm
       aws
       cli
       iac
@@ -25,15 +24,11 @@ in {
       fonts
       preferences
       # aerospace
-      # sketchybar
-      # skhd
-      # yabai
     ];
   };
   "erik@bridge" = cell.lib.mkDarwinSystem {
     username = "erik.jenks";
     homeModules = with homeModules; [
-      # wm
       aws
       cli
       iac
@@ -49,9 +44,6 @@ in {
       fonts
       preferences
       netskope
-      # sketchybar
-      # skhd
-      # yabai
     ];
   };
 }
