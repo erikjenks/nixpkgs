@@ -11,4 +11,6 @@
     trackpad.Dragging = true;
     NSGlobalDomain.AppleShowScrollBars = "WhenScrolling";
   };
+  system.keyboard.enableKeyMapping = true;
+  system.keyboard.remapCapsLockToEscape = true;
 }

@@ -7,6 +7,7 @@
   ];
   home.packages = with pkgs; [
     fx
+    gh
     jq
     enc
     gum

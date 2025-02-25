@@ -8,4 +8,5 @@
     home.stateVersion = "22.05";
   };
   bridge = import ./bridge.nix;
+  elastic = import ./elastic.nix;
 }
