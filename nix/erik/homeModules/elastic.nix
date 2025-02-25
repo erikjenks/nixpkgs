@@ -1,6 +1,6 @@
 {
   lib,
-  inputs,
+  pkgs,
   ...
 }: {
   programs.ssh = {
@@ -14,6 +14,7 @@
   };
 
   programs.git = {
+    userEmail = lib.mkForce "erik.jenks@elastic.co";
     extraConfig = {
       url = {
         "ssh://git@github.com/" = {
@@ -22,4 +23,7 @@
       };
     };
   };
+  home.packages = with pkgs; [
+    pwgen
+  ];
 }

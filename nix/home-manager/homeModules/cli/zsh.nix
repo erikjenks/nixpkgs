@@ -49,6 +49,9 @@
       zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'
       # switch group using `<` and `>`
       zstyle ':fzf-tab:*' switch-group '<' '>'
+      if [ -x /opt/homebrew/bin/brew ]; then
+        eval "$(/opt/homebrew/bin/brew shellenv)"
+      fi
     '';
   };
 

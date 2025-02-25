@@ -1,8 +1,12 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   programs.git = {
     enable = true;
     userName = "Erik Jenks";
-    userEmail = "erikjenks@gmail.com";
+    userEmail = lib.mkDefault "erikjenks@gmail.com";
     ignores = [
       ".direnv"
     ];
