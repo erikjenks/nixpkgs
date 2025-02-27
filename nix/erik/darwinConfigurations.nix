@@ -50,10 +50,10 @@ in {
   "erik@elastic" = cell.lib.mkDarwinSystem {
     username = "erik.jenks";
     homeModules = with homeModules; [
-      # aws
+      aws
       cli
-      # iac
-      # k8s
+      iac
+      k8s
       helix
       ide-full
       wezterm
