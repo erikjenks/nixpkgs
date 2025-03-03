@@ -61,6 +61,10 @@
       if [ -x /opt/homebrew/bin/brew ]; then
         eval "$(/opt/homebrew/bin/brew shellenv)"
       fi
+      if [ -x /opt/homebrew/bin/jenv ]; then
+        export PATH="$HOME/.jenv/bin:$PATH"
+        eval "$(jenv init -)"
+      fi
     '';
   };
 
