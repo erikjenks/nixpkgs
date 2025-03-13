@@ -30,6 +30,6 @@
     "golang"
   ];
   programs.zsh.initExtra = ''
-    export PATH=$HOME/go/bin:$PATH
+    [[ ":$PATH:" != *":$HOME/go/bin:"* ]] && export PATH="$HOME/go/bin:$PATH"
   '';
 }
