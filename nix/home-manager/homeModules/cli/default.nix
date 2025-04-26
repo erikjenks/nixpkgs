@@ -17,6 +17,7 @@
     unzip
     watch
     ffmpeg
+    heroku
     cachix
     httpie
     rclone
