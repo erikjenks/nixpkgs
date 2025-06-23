@@ -9,6 +9,10 @@
     userEmail = lib.mkDefault "erikjenks@gmail.com";
     ignores = [
       ".direnv"
+      "logs"
+      ".bsp"
+      ".java-version"
+      ".windsurf"
     ];
     extraConfig = {
       core.pager = "cat";

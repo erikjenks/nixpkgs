@@ -28,6 +28,7 @@
           "gcd"
           "direnv"
           "vi-mode"
+          "colored-man-pages"
         ]
         ++ lib.lists.optional (pkgs.stdenv.isDarwin) "macos";
     };
