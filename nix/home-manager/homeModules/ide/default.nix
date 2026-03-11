@@ -5,7 +5,6 @@
     statix
     deadnix
     ripgrep
-    tree-sitter
   ];
 
   home.shellAliases = {
