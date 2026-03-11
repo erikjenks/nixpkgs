@@ -39,7 +39,9 @@
       };
     }
     {
-      packages = std.harvest (inputs.self) [];
+      packages = std.harvest (inputs.self) [
+        ["apple-fonts" "packages"]
+      ];
 
       darwinConfigurations =
         (std.harvest (inputs.self) [

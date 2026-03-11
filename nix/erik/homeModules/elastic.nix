@@ -5,8 +5,11 @@
 }: {
   programs.ssh = {
     enable = true;
-    controlPath = "~/.ssh.%C";
+    enableDefaultConfig = false;
     matchBlocks = {
+      "*" = {
+        controlPath = "~/.ssh.%C";
+      };
       "github.com" = {
         identityFile = "/Users/erik.jenks/.ssh/id_ed25519";
       };
@@ -14,8 +17,8 @@
   };
 
   programs.git = {
-    userEmail = lib.mkForce "erik.jenks@elastic.co";
-    extraConfig = {
+    settings = {
+      user.email = lib.mkForce "erik.jenks@elastic.co";
       url = {
         "ssh://git@github.com/" = {
           insteadOf = "https://github.com/";

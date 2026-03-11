@@ -5,8 +5,6 @@
 }: {
   programs.git = {
     enable = true;
-    userName = "Erik Jenks";
-    userEmail = lib.mkDefault "erikjenks@gmail.com";
     ignores = [
       ".direnv"
       "logs"
@@ -14,9 +12,15 @@
       ".java-version"
       ".windsurf"
     ];
-    extraConfig = {
-      core.editor = "hx --wait";
-      core.pager = "cat";
+    settings = {
+      user = {
+        name = "Erik Jenks";
+        email = lib.mkDefault "erikjenks@gmail.com";
+      };
+      core = {
+        editor = "hx --wait";
+        pager = "cat";
+      };
       url = {
         "ssh://git@github.com/" = {
           insteadOf = "https://github.com/";

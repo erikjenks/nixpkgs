@@ -42,7 +42,7 @@ Congrats, your nix version supports flakes! It's just hidden behind a feature fl
 
 You can bootstrap with: 
 ```bash
-nix --experimental-features develop "nix-command flakes" .#bridge
+nix develop
 ```
 
 The shell will also enable those experimental features, so no need to pass that
@@ -54,7 +54,7 @@ future bootstraps reproductible.
 
 ## Usage
 
-- Run `home-manager switch --flake .#bridge` to apply your home
+- Run `darwin-rebuild switch --flake .#erik@elastic` (or `erik@home`) to apply your
   configuration.
 - This is aliased to the `reload` command.
 

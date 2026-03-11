@@ -6,7 +6,6 @@
   home.packages = with pkgs; [
     tilt
     fluxcd
-    kube3d
     kubectl
     helmfile
     telepresence2
