@@ -15,6 +15,7 @@
       ".windsurf"
     ];
     extraConfig = {
+      core.editor = "hx --wait";
       core.pager = "cat";
       url = {
         "ssh://git@github.com/" = {

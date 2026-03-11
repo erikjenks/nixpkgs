@@ -1,6 +1,5 @@
 {
   lib,
-  inputs,
   ...
 }: {
   programs.ssh = {
@@ -41,7 +40,4 @@
       };
     };
   };
-  home.packages = [
-    inputs.cells.truss-cli.packages.truss-cli
-  ];
 }
