@@ -16,7 +16,7 @@
     darwin.inputs.nixpkgs.follows = "nixpkgs";
 
     devenv.url = "github:cachix/devenv/v1.3.1";
-    helix.url = "github:helix-editor/helix/25.01.1";
+    helix.url = "github:helix-editor/helix";
   };
 
   outputs = {std, ...} @ inputs:

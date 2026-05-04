@@ -135,3 +135,125 @@ NixOS makes it easy to share common configuration between hosts (you might want
 to create a common directory for these), while keeping everything in sync.
 home-manager can help you sync your environment (from editor to WM and
 everything in between) anywhere you use it. Have fun!
+
+# Bootstrapping on a New Mac
+
+This covers how to get from a fresh macOS install to a fully configured system using this flake.
+
+## Prerequisites
+
+### 1. Install Nix
+
+Use the Determinate Systems installer — it handles macOS-specific quirks better than the official installer and ships with flakes enabled out of the box:
+
+```bash
+curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
+```
+
+Open a new terminal after installation so `nix` is on your PATH.
+
+### 2. Install Xcode Command Line Tools
+
+Required for some build steps:
+
+```bash
+xcode-select --install
+```
+
+### 3. Fix `/etc/zshrc` conflict
+
+nix-darwin manages `/etc/zshrc` and `/etc/bashrc`, but macOS ships with its own versions. Move them out of the way before proceeding:
+
+```bash
+sudo mv /etc/zshrc /etc/zshrc.before-nix-darwin
+sudo mv /etc/bashrc /etc/bashrc.before-nix-darwin
+```
+
+## Clone the Repo
+
+```bash
+git clone https://github.com/erikjenks/nixpkgs.git ~/nixpkgs
+cd ~/nixpkgs
+git checkout 25.11
+```
+
+## Bootstrap the Dev Shell
+
+Enter the dev shell to get `home-manager` and flake support available:
+
+```bash
+nix develop
+```
+
+## First-Time nix-darwin Install
+
+`darwin-rebuild` doesn't exist yet on a fresh machine, so the first activation uses `nix run`:
+
+```bash
+nix run nix-darwin -- switch --flake .#erik@elastic
+```
+
+Swap `erik@elastic` for `erik@home` if you're setting up a personal machine. After this completes, `darwin-rebuild` will be on your PATH.
+
+## All Future Rebuilds
+
+```bash
+darwin-rebuild switch --flake .#erik@elastic
+# or the alias:
+reload
+```
+
+---
+
+## Troubleshooting
+
+### Hash mismatch on Apple Fonts
+
+If `nix develop` fails with a `hash mismatch` error on one of the SF font `.dmg` files (SF-Compact, SF-Pro, etc.), the file has been updated at Apple's download URL without the flake hash being updated. The error output will show you both the old hash and the correct new one:
+
+```
+specified: sha256-<old-hash>
+got:       sha256-<new-hash>
+```
+
+Open the relevant file in `nix/apple-fonts/` and replace the `sha256` with the value shown in the `got:` line, then re-run `nix develop`. Commit the fix so future bootstraps work cleanly.
+
+### Tree-sitter grammar 404 errors
+
+If the first `darwin-rebuild switch` fails with an HTTP 404 on a tree-sitter grammar archive (e.g. `tree-sitter-go-template`), the pinned commit no longer exists upstream. You have three options:
+
+**Remove the grammar** (quickest, if you don't use that language):
+
+Find and remove the grammar entry from your helix config in `nix/`.
+
+**Update to a valid commit:**
+
+```bash
+nix-prefetch-url --unpack "https://github.com/<owner>/<grammar-repo>/archive/HEAD.tar.gz"
+```
+
+Update both the `rev` and `sha256` in your grammar definition to match.
+
+**Bump the helix input:**
+
+```bash
+nix flake update helix
+```
+
+This pulls the latest helix release and its updated grammar pins. Update `flake.nix` to point at a newer release tag if you want to stay pinned.
+
+### Hostname mismatch
+
+nix-darwin matches the flake target to your machine's hostname. If the build fails to find your configuration, check:
+
+```bash
+hostname
+```
+
+Pass the target explicitly to work around it:
+
+```bash
+nix run nix-darwin -- switch --flake .#erik@elastic
+```
+
+To rename your Mac to match: **System Settings → General → About → Name**.

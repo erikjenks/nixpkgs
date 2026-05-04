@@ -10,11 +10,11 @@ in {
     version = "1";
     pro = fetchurl {
       url = "https://devimages-cdn.apple.com/design/resources/download/SF-Pro.dmg";
-      sha256 = "sha256-IccB0uWWfPCidHYX6sAusuEZX906dVYo8IaqeX7/O88=";
+      sha256 = "sha256-W0sZkipBtrduInk0oocbFAXX1qy0Z+yk2xUyFfDWx4s=";
     };
     compact = fetchurl {
       url = "https://devimages-cdn.apple.com/design/resources/download/SF-Compact.dmg";
-      sha256 = "sha256-PlraM6SwH8sTxnVBo6Lqt9B6tAZDC//VCPwr/PNcnlk=";
+      sha256 = "sha256-RWeq4GFt01r8NLrWvvVH5y/R5lhFMFozlzBkUY0dU0g=";
     };
     mono = fetchurl {
       url = "https://devimages-cdn.apple.com/design/resources/download/SF-Mono.dmg";

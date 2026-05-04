@@ -6,6 +6,11 @@
   programs.zsh = {
     enable = true;
 
+    # zplug clones GitHub over SSH by default; that prompts for keys and can
+    # corrupt the install progress line in GUI terminals (Wezterm). HTTPS is
+    # enough for these public plugins (git can still use SSH via ~/.ssh/config).
+    sessionVariables.ZPLUG_PROTOCOL = "HTTPS";
+
     autocd = true;
     enableCompletion = true;
     autosuggestion.enable = true;
@@ -14,6 +19,8 @@
     history.share = true;
 
     profileExtra = ''
+      eval "$(/opt/homebrew/bin/brew shellenv)"
+
       # >>> coursier install directory >>>
       export PATH="$PATH:/Users/erik.jenks/Library/Application Support/Coursier/bin"
       # <<< coursier install directory <<<
@@ -42,7 +49,19 @@
       ];
     };
 
-    initContent = ''
+    initContent = lib.mkMerge [
+      (lib.mkOrder 500 ''
+        # macOS GUI apps (e.g. Wezterm) often start without SSH_AUTH_SOCK; loginwindow's
+        # agent is still available via launchd.
+        if [[ -z "$SSH_AUTH_SOCK" && "$OSTYPE" == darwin* ]]; then
+          _hm_ssh_sock="$(launchctl getenv SSH_AUTH_SOCK 2>/dev/null)"
+          if [[ -n "$_hm_ssh_sock" ]]; then
+            export SSH_AUTH_SOCK="$_hm_ssh_sock"
+          fi
+          unset _hm_ssh_sock
+        fi
+      '')
+      ''
       # disable sort when completing `git checkout`
       zstyle ':completion:*:git-checkout:*' sort false
       # set descriptions format to enable group support
@@ -59,7 +78,8 @@
       if [ -f ~/.local_zshrc ]; then
         source ~/.local_zshrc
       fi
-    '';
+    ''
+    ];
   };
 
   programs.direnv.enable = true;

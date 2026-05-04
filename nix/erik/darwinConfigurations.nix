@@ -42,6 +42,8 @@ in {
     darwinModules = with darwinModules; [
       fonts
       preferences
+      # Determinate Nix owns the daemon; nix-darwin must not manage Nix here.
+      {nix.enable = false;}
     ];
   };
 }
