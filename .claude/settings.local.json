@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//Users/erik.jenks/Applications/**)",
+      "Read(//Applications/**)",
+      "Bash(grep \"\\\\.nix$\")",
+      "Read(//nix/store/b7pz0r4fl89z55m12lpvpvzg0g025r1p-darwin-system-25.11.ebec37a/**)",
+      "Read(//nix/var/nix/profiles/**)",
+      "Bash(/nix/store/8m9z6a7skjg5rhar6hmpzhwswa7zb1hs-activation-erik.jenks)"
+    ]
+  }
+}

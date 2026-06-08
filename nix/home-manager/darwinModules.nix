@@ -10,6 +10,7 @@
     home-manager = {
       useGlobalPkgs = true;
       useUserPackages = true;
+      backupFileExtension = "before-hm";
       extraSpecialArgs = {
         inherit inputs username unstable;
       };
